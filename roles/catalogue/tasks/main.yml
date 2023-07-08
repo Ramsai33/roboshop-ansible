@@ -53,9 +53,8 @@
     name: mongodb-org-shell
     state: installed
 
-- name: Load schema
+- name: Load Schema
   community.mongodb.mongodb_shell:
     login_host: mongodb-dev.ramdevops35.online
     file: "/app/schema/catalogue.js"
     idempotent: yes
-
