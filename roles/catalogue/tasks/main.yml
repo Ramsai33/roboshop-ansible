@@ -9,6 +9,11 @@
 - name: Adding User
   ansible.builtin.shell: useradd roboshop
 
+- name: Remove Old content
+  ansible.builtin.file:
+    path: /app
+    state: absent
+
 - name: Create a directory
   ansible.builtin.file:
     path: /app
@@ -17,7 +22,7 @@
 - name: Download and Extracting
   ansible.builtin.unarchive:
     src: curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip
-    dest: /tmp/catalogue.zip
+    dest: /app
     remote_src: yes
 
 - name: Installing NPM
