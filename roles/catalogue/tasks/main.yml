@@ -26,10 +26,10 @@
     dest: /app
     remote_src: yes
 
-- name: Installing NPM
-  ansible.builtin.yum:
-    name: npm
-    state: installed
+- name: Install NPM
+  community.general.npm:
+    path: /app
+    state: latest
 
 - name: Copy Catalogue conf
   ansible.builtin.copy:
