@@ -8,9 +8,9 @@
 
 - name: Adding User
   ansible.builtin.user:
-  name: roboshop
+    name: roboshop
 
-- name: Remove Old content
+  - name: Remove Old content
   ansible.builtin.file:
     path: /app
     state: absent
