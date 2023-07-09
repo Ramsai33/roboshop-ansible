@@ -1,21 +1,21 @@
-- name: Downloading Repo
+- name: Configure NodeJS repos
   ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
-- name: Installing NodeJs
+- name: Install NodeJS
   ansible.builtin.yum:
     name: nodejs
     state: installed
 
-- name: Adding User
+- name: Add Application User
   ansible.builtin.user:
     name: roboshop
 
-- name: Remove Old content
+- name: Remove old app content
   ansible.builtin.file:
     path: /app
     state: absent
 
-- name: Create a directory
+- name: Create app Directory
   ansible.builtin.file:
     path: /app
     state: directory
@@ -26,7 +26,7 @@
     dest: /app
     remote_src: yes
 
-- name: Install NPM
+- name: Install Nodejs dependencies
   community.general.npm:
     path: /app
     state: latest
@@ -56,5 +56,5 @@
 - name: Load Schema
   community.mongodb.mongodb_shell:
     login_host: mongodb-dev.ramdevops35.online
-    file: "/app/schema/catalogue.js"
+    file: "/app/schema/{{component}}.js"
     idempotent: yes
