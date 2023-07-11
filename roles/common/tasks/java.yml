@@ -16,3 +16,4 @@
 
 - name: Schema Load
   ansible.builtin.include_tasks: "{{schema_type}}-schema.yml"
+  when: schema_load
