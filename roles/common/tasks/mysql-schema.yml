@@ -1,0 +1,12 @@
+- name: Install Mysql
+  ansible.builtin.yum:
+    name: mysql
+    state: installed
+
+- name: Load schema
+  ansible.builtin.shell: mysql -h mysql-dev.ramdevops35.online -uroot -p{{mysql_password}} < /app/schema/shipping.sql
+
+- name: Restart service
+  ansible.builtin.service:
+    name: shipping
+    state: restarted
