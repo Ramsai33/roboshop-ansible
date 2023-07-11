@@ -44,18 +44,6 @@
     state: restarted
 
 
-- name: Copy MongoDB Repo file
-  ansible.builtin.copy:
-    src: mongodb.repo
-    dest: /etc/yum.repos.d/mongodb.repo
-  when: schema_load
-
-- name: Install MongoDB Client
-  ansible.builtin.yum:
-    name: mongodb-org-shell
-    state: installed
-  when: schema_load
-
-- name: Load Schema
-  ansible.builtin.shell: mongo --host mongodb-dev.ramdevops35.online </app/schema/{{component}}.js
+- name: Schema_load
+  ansible.builtin.import_tasks: "{{schema_type}}.yml"
   when: schema_load
