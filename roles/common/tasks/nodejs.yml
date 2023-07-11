@@ -43,7 +43,6 @@
     enabled: yes
     state: restarted
 
-
 - name: Schema_load
-  ansible.builtin.import_tasks: "{{schema_type}}.yml"
+  import_tasks: "{{schema_type}}.yml"
   when: schema_load
