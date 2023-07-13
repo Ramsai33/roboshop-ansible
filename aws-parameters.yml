@@ -16,6 +16,6 @@
         name: "{{ item.name }}"
         value: "{{ item.value }}"
         region: "us-east-1"
-          string_type: "SecureString"
+        string_type: "SecureString"
       loop:
         - { name: "dev.payment.AMPQ_PASS", value: "Roboshop@1" }
