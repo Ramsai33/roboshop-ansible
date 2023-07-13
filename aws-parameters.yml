@@ -13,9 +13,9 @@
 
     - name: Secrets
       community.aws.ssm_parameter:
-        - name: "{{ item.name }}"
-          value: "{{ item.value }}"
-          region: "us-east-1"
+        name: "{{ item.name }}"
+        value: "{{ item.value }}"
+        region: "us-east-1"
           string_type: "SecureString"
       loop:
         - { name: "dev.payment.AMPQ_PASS", value: "Roboshop@1" }
