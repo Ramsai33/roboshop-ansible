@@ -15,9 +15,9 @@
 
 - name: Create or update key/value pair in AWS SSM parameter store
   community.aws.ssm_parameter:
-    name: "{{ item.name }}"
-    value: "{{ item.value }}"
-    region: "us-east-1"
-    string_type: "SecureString"
+    - name: "{{ item.name }}"
+      value: "{{ item.value }}"
+      region: "us-east-1"
+      string_type: "SecureString"
   loop:
     - { name: "dev.payment.AMPQ_PASS", value: "Roboshop@1" }
